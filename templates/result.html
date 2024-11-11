@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solar Power Prediction</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      h1 {
+        color: #2c3e50;
+      }
+      .stats {
+        margin: 20px 0;
+        padding: 15px;
+        background-color: #ecf0f1;
+        border-radius: 8px;
+      }
+      .stats p {
+        font-size: 1.2em;
+      }
+      .form-container {
+        margin-top: 30px;
+      }
+      input {
+        padding: 10px;
+        width: 200px;
+        margin: 10px 0;
+      }
+      button {
+        padding: 10px 15px;
+        background-color: #2980b9;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #3498db;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to Solar Power Prediction</h1>
+
+    <div class="stats">
+      <h3>Dataset Stats</h3>
+      <p>Mean Temperature: {{ stats.mean_temperature }} °C</p>
+      <p>Mean Irradiance: {{ stats.mean_irradiance }} W/m²</p>
+      <p>Mean Power: {{ stats.mean_power }} W</p>
+    </div>
+
+    <div class="stats">
+      <h3>Model Performance</h3>
+      <p>R² Score: {{ stats.r2_score }}</p>
+      <p>Mean Squared Error: {{ stats.mse }}</p>
+    </div>
+
+    <div class="form-container">
+      <h3>Enter your data for prediction</h3>
+      <form action="/predict" method="POST">
+        <label for="temperature">Temperature (°C):</label><br />
+        <input
+          type="number"
+          name="temperature"
+          step="any"
+          required
+        /><br /><br />
+        <label for="irradiance">Irradiance (W/m²):</label><br />
+        <input
+          type="number"
+          name="irradiance"
+          step="any"
+          required
+        /><br /><br />
+        <label for="current">Current (I_mp(A)):</label><br />
+        <input type="number" name="current" step="any" required /><br /><br />
+        <label for="voltage">Voltage (V_mp(V)):</label><br />
+        <input type="number" name="voltage" step="any" required /><br /><br />
+        <button type="submit">Predict Power</button>
+      </form>
+    </div>
+  </body>
+</html>

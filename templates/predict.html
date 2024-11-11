@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prediction Result</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      h1 {
+        color: #2c3e50;
+      }
+      .result {
+        margin: 20px 0;
+        padding: 15px;
+        background-color: #ecf0f1;
+        border-radius: 8px;
+      }
+      .result p {
+        font-size: 1.2em;
+      }
+      .back-btn {
+        padding: 10px 15px;
+        background-color: #2980b9;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      .back-btn:hover {
+        background-color: #3498db;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Predicted Power</h1>
+
+    <div class="result">
+      <h3>Predicted Power: {{ power_pred }} W</h3>
+    </div>
+
+    <button class="back-btn" onclick="window.location.href='/';">
+      Go Back
+    </button>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solar Power Prediction</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      h1 {
+        color: #2c3e50;
+      }
+      .stats {
+        margin: 20px 0;
+        padding: 15px;
+        background-color: #ecf0f1;
+        border-radius: 8px;
+      }
+      .stats p {
+        font-size: 1.2em;
+      }
+      .form-container {
+        margin-top: 30px;
+      }
+      input {
+        padding: 10px;
+        width: 200px;
+        margin: 10px 0;
+      }
+      button {
+        padding: 10px 15px;
+        background-color: #2980b9;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #3498db;
+      }
+      .model-toggle {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to Solar Power Prediction</h1>
+
+    <!-- Dataset Information -->
+    <div class="stats">
+      <h3>Dataset Information</h3>
+      <p><strong>Number of Rows:</strong> {{ dataset_stats.num_rows }}</p>
+      <p><strong>Number of Columns:</strong> {{ dataset_stats.num_columns }}</p>
+      <p><strong>Columns:</strong> {{ dataset_stats.columns | join(', ') }}</p>
+
+      <h4>Sample Data:</h4>
+      <table border="1">
+        <thead>
+          <tr>
+            {% for col in dataset_stats.columns %}
+            <th>{{ col }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in dataset_stats.sample_data %}
+          <tr>
+            {% for col in dataset_stats.columns %}
+            <td>{{ row[col] }}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Model Performance Section -->
+    <div class="model-toggle">
+      <div>
+        <h3>Decision Tree Model</h3>
+        <p>R² Score: {{ model_stats.dt_r2 }}</p>
+        <p>Mean Squared Error: {{ model_stats.dt_mse }}</p>
+      </div>
+      <div>
+        <h3>Random Forest Model</h3>
+        <p>R² Score: {{ model_stats.rf_r2 }}</p>
+        <p>Mean Squared Error: {{ model_stats.rf_mse }}</p>
+      </div>
+      <div>
+        <h3>Gradient Boosting Model</h3>
+        <p>R² Score: {{ model_stats.gb_r2 }}</p>
+        <p>Mean Squared Error: {{ model_stats.gb_mse }}</p>
+      </div>
+    </div>
+
+    <!-- Form Section for Input -->
+    <div class="form-container">
+      <h3>Enter your data for prediction</h3>
+      <form action="/predict" method="POST">
+        <label for="temperature">Temperature (°C):</label><br />
+        <input
+          type="number"
+          name="temperature"
+          step="any"
+          required
+        /><br /><br />
+        <label for="irradiance">Irradiance (W/m²):</label><br />
+        <input
+          type="number"
+          name="irradiance"
+          step="any"
+          required
+        /><br /><br />
+        <label for="current">Current (I_mp(A)):</label><br />
+        <input type="number" name="current" step="any" required /><br /><br />
+        <label for="voltage">Voltage (V_mp(V)):</label><br />
+        <input type="number" name="voltage" step="any" required /><br /><br />
+        <button type="submit">Predict Power</button>
+      </form>
+    </div>
+  </body>
+</html>
