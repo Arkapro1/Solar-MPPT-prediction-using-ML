@@ -12,36 +12,23 @@
       h1 {
         color: #2c3e50;
       }
-      .result {
-        margin: 20px 0;
-        padding: 15px;
+      .result-container {
+        margin-top: 30px;
+        padding: 20px;
         background-color: #ecf0f1;
         border-radius: 8px;
       }
-      .result p {
-        font-size: 1.2em;
-      }
-      .back-btn {
-        padding: 10px 15px;
-        background-color: #2980b9;
-        color: white;
-        border: none;
-        cursor: pointer;
-      }
-      .back-btn:hover {
-        background-color: #3498db;
+      .result-container p {
+        font-size: 1.5em;
       }
     </style>
   </head>
   <body>
-    <h1>Predicted Power</h1>
-
-    <div class="result">
-      <h3>Predicted Power: {{ power_pred }} W</h3>
+    <h1>Prediction Results</h1>
+    <div class="result-container">
+      <p><strong>Predicted V_mp:</strong> {{ v_mp_pred }}</p>
+      <p><strong>Predicted I_mp:</strong> {{ i_mp_pred }}</p>
+      <p><strong>Predicted Power:</strong> {{ power_pred }}</p>
     </div>
-
-    <button class="back-btn" onclick="window.location.href='/';">
-      Go Back
-    </button>
   </body>
 </html>
