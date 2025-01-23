@@ -3,38 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Solar Power Prediction</title>
+    <title>Solar Power Prediction 🧠</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
+        font-family: 'Roboto', sans-serif;
         margin: 20px;
+        background: url('https://www.solarpowereurope.org/_nuxt/img/error.63759b1.jpg') no-repeat center center fixed;
+        background-size: cover;
+        color: #333;
       }
       h1 {
-        color: #2c3e50;
+        color: #d6e0eb;
+        text-align: center;
       }
-      .stats {
+      .stats, .form-container, .model-toggle {
         margin: 20px 0;
-        padding: 15px;
-        background-color: #ecf0f1;
-        border-radius: 8px;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.532);
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+        backdrop-filter: blur(10px);
       }
-      .stats p {
-        font-size: 1.2em;
+      .stats:hover, .form-container:hover, .model-toggle > div:hover {
+        transform: translateY(-5px);
       }
-      .form-container {
-        margin-top: 30px;
+      .stats h3, .form-container h3, .model-toggle h3 {
+        color: #2980b9;
+      }
+      .stats p, .model-toggle p {
+        font-size: 1.1em;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #2980b9;
+        color: white;
       }
       input {
         padding: 10px;
-        width: 200px;
+        width: calc(100% - 22px);
         margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
       }
       button {
-        padding: 10px 15px;
+        padding: 10px 20px;
         background-color: #2980b9;
         color: white;
         border: none;
+        border-radius: 5px;
         cursor: pointer;
+        transition: background-color 0.3s;
       }
       button:hover {
         background-color: #3498db;
@@ -42,12 +70,35 @@
       .model-toggle {
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .model-toggle > div {
+        flex: 1;
+        margin: 10px;
+        padding: 20px;
+        background-color: rgba(236, 240, 241, 0.7);
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+      }
+      .illustration {
+        text-align: center;
         margin: 20px 0;
+      }
+      .illustration img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
     </style>
   </head>
   <body>
     <h1>Welcome to Solar Power Prediction</h1>
+
+    <div class="illustration">
+      <img src="https://png.pngtree.com/thumb_back/fh260/background/20230626/pngtree-sustainable-energy-at-industrial-green-field-3d-render-illustration-of-solar-image_3683718.jpg" alt="Solar Power Illustration">
+    </div>
 
     <!-- Dataset Information -->
     <div class="stats">
